@@ -1,5 +1,8 @@
 # Student Management System | Simple CRUD in React & Java Spring Boot
 
+### Video Sample:
+https://github.com/shtanriverdi/react-java-spring-student-crud-project/assets/36234545/d0c165c4-0cac-4623-8e02-92c26b1812ce
+
 ## Introduction
 This is a full-stack web application where teachers can view and manage student grades. The application consists of two parts: a backend developed using Spring Boot and a frontend developed using React.js. The backend will handle database operations, while the frontend will provide a user interface for interacting with the system.
 

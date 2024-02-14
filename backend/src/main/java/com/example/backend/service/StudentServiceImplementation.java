@@ -3,6 +3,7 @@ package com.example.backend.service;
 import com.example.backend.entity.Student;
 import com.example.backend.repository.StudentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -16,7 +17,14 @@ public class StudentServiceImplementation implements StudentService {
     @Override
     public List<Student> fetchAllStudents(String sortParam) {
         // Retrieve all students from the database and optionally sort them
-        return (List<Student>) studentRepository.findAll();
+        if ("asc".equalsIgnoreCase(sortParam)) {
+            return studentRepository.findAll(Sort.by(Sort.Direction.ASC, "grade"));
+        } else if ("desc".equalsIgnoreCase(sortParam)) {
+            return studentRepository.findAll(Sort.by(Sort.Direction.DESC, "grade"));
+        } else {
+            // Return unsorted list if sortParam is not provided or invalid
+            return (List<Student>) studentRepository.findAll();
+        }
     }
 
     @Override

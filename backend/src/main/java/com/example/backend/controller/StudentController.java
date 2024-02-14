@@ -17,6 +17,7 @@ public class StudentController {
     // "asc" -> Sorted in ascending order 1, 5, 9
     // "desc" -> Sorted in descending order 9, 5, 1
     @GetMapping("/students")
+    @CrossOrigin
     public List<Student> fetchStudentList(@RequestParam(required = false) String sortParam) {
         // Don't sort by default
         if (sortParam == null || sortParam.isEmpty()) {
@@ -27,24 +28,28 @@ public class StudentController {
 
     // Fetch a student by ID
     @GetMapping("/students/{id}")
+    @CrossOrigin
     public Student fetchStudentById(@PathVariable int id) {
         return studentService.fetchStudentById(id);
     }
 
     // Create a new student
     @PostMapping("/students")
+    @CrossOrigin
     public Student createNewStudent(@RequestBody Student student) {
         return studentService.createNewStudent(student);
     }
 
     // Update an existing student
     @PutMapping("/students")
+    @CrossOrigin
     public Student updateStudent(@RequestBody Student student) {
         return studentService.updateStudent(student);
     }
 
     // Delete a student by ID
     @DeleteMapping("/students/{id}")
+    @CrossOrigin
     public String deleteStudent(@PathVariable int id) {
         studentService.deleteStudent(id);
         return "Deleted Successfully";

@@ -18,8 +18,8 @@ export default function Details({ student, onStudentDelete, onRefresh }) {
 
       if (response.ok) {
         // If DELETE request is successful, show success message
-        onStudentDelete(true);
         toggle();
+        onStudentDelete(true);
         onRefresh();
       } else {
         // If there is an error, handle it accordingly

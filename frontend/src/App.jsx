@@ -8,7 +8,6 @@ const API_URL = "http://localhost:8080/students";
 export default function App() {
   const [students, setStudents] = useState([]);
   const [showSuccessMessage, setShowSuccessMessage] = useState(false);
-
   const handleFetch = (sortParam = "") => {
     const fetchData = async (sortParam) => {
       try {
@@ -29,6 +28,10 @@ export default function App() {
   useEffect(() => {
     handleFetch();
   }, []);
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [students, showSuccessMessage]);
 
   return (
     <div className="flex flex-col justify-center items-center h-full w-full">

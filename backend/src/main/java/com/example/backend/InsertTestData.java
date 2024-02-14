@@ -9,7 +9,6 @@ import java.util.Random;
 
 // Creates a table and inserts 50 random students for testing purposes
 public class InsertTestData {
-
     public static void main(String[] args) {
         String url = "jdbc:mysql://localhost:3306/students_db";
         String username = "root";
@@ -19,8 +18,8 @@ public class InsertTestData {
             Statement statement = connection.createStatement();
 
             // Check if the table exists, if not create one
-            if (!isTableExists(statement, "students")) {
-                createTable(statement, "students");
+            if (!isTableExists(statement)) {
+                createTable(statement);
             }
 
             String tableName = "students";
@@ -36,9 +35,9 @@ public class InsertTestData {
                 statement.executeUpdate(insertSQL);
             }
 
-            System.out.println("50 öğrenci eklendi.");
+            System.out.println("50 students were added.");
         } catch (SQLException e) {
-            System.err.println("Veri ekleme hatası: " + e.getMessage());
+            System.err.println("Error: " + e.getMessage());
         }
     }
 
@@ -53,13 +52,13 @@ public class InsertTestData {
         return random.nextInt(101);
     }
 
-    private static boolean isTableExists(Statement statement, String tableName) throws SQLException {
-        ResultSet resultSet = statement.executeQuery("SHOW TABLES LIKE '" + tableName + "'");
+    private static boolean isTableExists(Statement statement) throws SQLException {
+        ResultSet resultSet = statement.executeQuery("SHOW TABLES LIKE '" + "students" + "'");
         return resultSet.next();
     }
 
-    private static void createTable(Statement statement, String tableName) throws SQLException {
-        String createTableSQL = "CREATE TABLE " + tableName + " (" +
+    private static void createTable(Statement statement) throws SQLException {
+        String createTableSQL = "CREATE TABLE " + "students" + " (" +
                 "id INT AUTO_INCREMENT PRIMARY KEY, " +
                 "first_name VARCHAR(255), " +
                 "last_name VARCHAR(255), " +

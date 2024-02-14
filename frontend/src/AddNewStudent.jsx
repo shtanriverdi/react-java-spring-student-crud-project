@@ -38,59 +38,65 @@ export default function AddNewStudent() {
   };
 
   return (
-    <div className="flex flex-col h-full w-full mt-32 px-20">
-      <h1 className="text-5xl text-center mb-10">Register a New Student</h1>
-
-      <Form onSubmit={handleSubmit}>
-        <FormGroup>
-          <Label for="firstName">First Name</Label>
-          <Input
-            id="firstName"
-            name="fname"
-            placeholder="Student Name"
-            type="text"
-            value={firstName}
-            onChange={(e) => setFirstName(e.target.value)}
-            required={true}
-          />
-          <FormFeedback tooltip>First name cannot be empty</FormFeedback>
-        </FormGroup>
-        <FormGroup>
-          <Label for="lastName">Last Name</Label>
-          <Input
-            id="lastName"
-            name="lname"
-            placeholder="Student Surname"
-            type="text"
-            value={lastName}
-            onChange={(e) => setLastName(e.target.value)}
-            required={true}
-          />
-          <FormFeedback tooltip>Last name cannot be empty</FormFeedback>
-        </FormGroup>
-        <FormGroup>
-          <Label for="grade">Grade</Label>
-          <Input
-            id="grade"
-            name="grade"
-            placeholder="Student Grade"
-            type="number"
-            value={grade}
-            onChange={(e) => setGrade(e.target.value)}
-            required={true}
-            min="0"
-            max="100"
-          />
-          <FormFeedback tooltip>Grade cannot be empty</FormFeedback>
-        </FormGroup>
-        <div className="flex justify-end mb-10">
+    <div className="flex flex-col items-center w-full mt-32">
+      <div className="flex flex-col w-fit px-20">
+        <h1 className="text-5xl text-center mb-20">Register a New Student</h1>
+        <Form onSubmit={handleSubmit}>
+          <FormGroup>
+            <Label for="firstName">First Name:</Label>
+            <Input
+              id="firstName"
+              name="fname"
+              placeholder="Student Name"
+              type="text"
+              value={firstName}
+              onChange={(e) => setFirstName(e.target.value)}
+              required={true}
+            />
+            <FormFeedback tooltip>First name cannot be empty</FormFeedback>
+          </FormGroup>
+          <FormGroup>
+            <Label for="lastName">Last Name:</Label>
+            <Input
+              id="lastName"
+              name="lname"
+              placeholder="Student Surname"
+              type="text"
+              value={lastName}
+              onChange={(e) => setLastName(e.target.value)}
+              required={true}
+            />
+            <FormFeedback tooltip>Last name cannot be empty</FormFeedback>
+          </FormGroup>
+          <FormGroup>
+            <Label for="grade">Grade:</Label>
+            <Input
+              id="grade"
+              name="grade"
+              placeholder="Student Grade"
+              type="number"
+              value={grade}
+              onChange={(e) => setGrade(e.target.value)}
+              required={true}
+              min="0"
+              max="100"
+            />
+            <FormFeedback tooltip>Grade cannot be empty</FormFeedback>
+          </FormGroup>
           {/* <Link className="text-2xl font-bold text-center" to="/"> */}
+          {/* </Link> */}
+        </Form>
+        <div className="flex justify-between mt-5">
+          <Link className="text-2xl font-bold text-center" to="/">
+            <Button outline size="md">
+              {"< Go Back"}
+            </Button>
+          </Link>
           <Button color="success" size="md">
             + Add New Student
           </Button>
-          {/* </Link> */}
         </div>
-      </Form>
+      </div>
     </div>
   );
 }

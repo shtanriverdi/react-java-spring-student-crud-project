@@ -3,14 +3,12 @@ import { Table } from "reactstrap";
 export default function Students({ students }) {
   const tableItems = students.map((student) => {
     return (
-      <>
-        <tr>
-          <th scope="row">{student.id}</th>
-          <td>{student.first_name}</td>
-          <td>{student.last_name}</td>
-          <td>{student.grade}</td>
-        </tr>
-      </>
+      <tr key={student.id}>
+        <th>{student.id}</th>
+        <td>{student.firstName}</td>
+        <td>{student.lastName}</td>
+        <td>{student.grade}</td>
+      </tr>
     );
   });
 
@@ -18,7 +16,7 @@ export default function Students({ students }) {
     <Table>
       <thead>
         <tr>
-          <th>#</th>
+          <th># ID</th>
           <th>First Name</th>
           <th>Last Name</th>
           <th>Grade</th>

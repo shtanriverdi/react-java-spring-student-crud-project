@@ -8,10 +8,10 @@ const API_URL = "http://localhost:8080/students";
 export default function App() {
   const [students, setStudents] = useState([]);
 
-  useEffect(() => {
-    const fetchData = async () => {
+  const handleFetch = (sortParam = "") => {
+    const fetchData = async (sortParam) => {
       try {
-        const response = await fetch(API_URL);
+        const response = await fetch(API_URL + "?sortParam=" + sortParam);
         if (!response.ok) {
           throw new Error("Failed to fetch data");
         }
@@ -22,7 +22,11 @@ export default function App() {
       }
     };
 
-    fetchData();
+    fetchData(sortParam);
+  };
+
+  useEffect(() => {
+    handleFetch();
   }, []);
 
   return (
@@ -31,7 +35,21 @@ export default function App() {
         <h1 className="text-5xl text-center mb-10">
           Student Management System
         </h1>
-        <div className="flex justify-end mb-10">
+        <div className="flex justify-between mb-10">
+          <Button
+            outline
+            color="secondary"
+            onClick={() => handleFetch("asc")}
+            size="sm">
+            Sort Grades <span className="text-xl">↑</span>
+          </Button>
+          <Button
+            outline
+            onClick={() => handleFetch("desc")}
+            color="secondary"
+            size="sm">
+            Sort Grades <span className="text-xl">↓</span>
+          </Button>
           <Link className="text-2xl font-bold text-center" to="/addNewStudent">
             <Button color="success" size="md">
               + Add New Student

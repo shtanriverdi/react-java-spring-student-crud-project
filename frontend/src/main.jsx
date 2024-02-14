@@ -7,7 +7,6 @@ import "./index.css";
 import AddNewStudent from "./AddNewStudent.jsx";
 import NotFoundPage from "./NotFoundPage.jsx";
 
-
 const router = createBrowserRouter([
   {
     path: "/",

@@ -7,6 +7,7 @@ const API_URL = "http://localhost:8080/students";
 
 export default function App() {
   const [students, setStudents] = useState([]);
+  const [showSuccessMessage, setShowSuccessMessage] = useState(false);
 
   const handleFetch = (sortParam = "") => {
     const fetchData = async (sortParam) => {
@@ -35,6 +36,26 @@ export default function App() {
         <h1 className="text-5xl text-center mb-10">
           Student Management System
         </h1>
+        {showSuccessMessage && (
+          <div
+            className="flex justify-between items-center alert alert-warning mb-10"
+            role="alert">
+            <span>Student has been successfully removed!</span>
+            <div
+              onClick={() => setShowSuccessMessage(false)}
+              style={{
+                cursor: "pointer",
+                backgroundColor: "transparent",
+                border: "none",
+                outline: "none",
+                padding: "0",
+                fontSize: "1.5rem",
+                fontWeight: "bolder",
+              }}>
+              <span aria-hidden="true">×</span>
+            </div>
+          </div>
+        )}
         <div className="flex justify-between mb-10">
           <Button
             outline
@@ -56,7 +77,11 @@ export default function App() {
             </Button>
           </Link>
         </div>
-        <Students students={students} />
+        <Students
+          students={students}
+          onStudentDelete={setShowSuccessMessage}
+          onRefresh={handleFetch}
+        />
       </div>
     </div>
   );

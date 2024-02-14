@@ -13,7 +13,7 @@ export default function AddNewStudent() {
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [grade, setGrade] = useState("");
-  const [showSuccessMessage, setShowSuccessMessage] = useState(true);
+  const [showSuccessMessage, setShowSuccessMessage] = useState(false);
 
   const handleSubmit = async (e) => {
     e.preventDefault();

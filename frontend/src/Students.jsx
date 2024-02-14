@@ -1,6 +1,7 @@
 import { Table } from "reactstrap";
+import Details from "./Details";
 
-export default function Students({ students }) {
+export default function Students({ students, onStudentDelete, onRefresh }) {
   const tableItems = students.map((student) => {
     return (
       <tr key={student.id}>
@@ -8,6 +9,13 @@ export default function Students({ students }) {
         <td>{student.firstName}</td>
         <td>{student.lastName}</td>
         <td>{student.grade}</td>
+        <td>
+          <Details
+            student={student}
+            onStudentDelete={onStudentDelete}
+            onRefresh={onRefresh}
+          />
+        </td>
       </tr>
     );
   });
